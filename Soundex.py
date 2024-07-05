@@ -11,14 +11,18 @@ def get_soundex_code(c):
     return mapping.get(c, '0')  # Default to '0' for non-mapped characters
 
 
+def soundex_length(soundex):
+    if len(soundex) > 4:
+        soundex = soundex[:4]
+    return soundex
+
 def char_mapping(soundex, name, prev_code):
     for char in name[1:]:
-        code = get_soundex_code(char)
+        code = get_soundex_code(char)        
         if code != '0' and code != prev_code:
             soundex += code
             prev_code = code
-        if len(soundex) == 4:
-            break
+        soundex = soundex_length(soundex)
     return soundex
 
 def generate_soundex(name):
