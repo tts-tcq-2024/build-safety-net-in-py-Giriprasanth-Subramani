@@ -1,4 +1,5 @@
 import unittest
+from soundex import generate_soundex
 
 class TestSoundex(unittest.TestCase):
     def test_empty_string(self):
