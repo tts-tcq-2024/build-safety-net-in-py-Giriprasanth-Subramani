@@ -1,14 +1,8 @@
 def get_soundex_code(c):
     c = c.upper()
-    mapping = {
-        'B': '1', 'F': '1', 'P': '1', 'V': '1',
-        'C': '2', 'G': '2', 'J': '2', 'K': '2', 'Q': '2', 'S': '2', 'X': '2', 'Z': '2',
-        'D': '3', 'T': '3',
-        'L': '4',
-        'M': '5', 'N': '5',
-        'R': '6'
-    }
-    return mapping.get(c, '0')  # Default to '0' for non-mapped characters
+    soundex_mapping = '01230120022455012623010202'
+    index = ord(c) - ord('A')
+    return soundex_mapping[index] if 0 <= index < len(soundex_mapping) else '0'
 
 
 def soundex_length(soundex):
