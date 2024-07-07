@@ -10,10 +10,17 @@ def soundex_length(soundex):
         soundex = soundex[:4]
     return soundex
 
+def decision(code, prev_code):
+    if code != '0' and code != prev_code:
+        return code
+    else:
+        return ""
+
 def char_mapping(soundex, name, prev_code):
     for char in name[1:]:
         code = get_soundex_code(char)        
-        if code != '0' and code != prev_code:
+        code = decision(code, prev_code)
+        if code != "":
             soundex += code
             prev_code = code
         soundex = soundex_length(soundex)
